@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КТСиА - Преподаватели</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">КТСиА Портал</span>
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="user-name">Зимин Максим</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="page-header">
+                <h1 class="page-title">Преподаватели</h1>
+                <p class="page-subtitle">Список преподавателей и контактная информация</p>
+            </section>
+
+            <section class="navigation-section">
+                <div class="navigation-grid">
+                    <a href="index.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-home"></i></div>
+                        <span class="nav-text">Главная</span>
+                    </a>
+                    <a href="schedule.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <span class="nav-text">Расписание</span>
+                    </a>
+                    <a href="journal.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-book"></i></div>
+                        <span class="nav-text">Журнал</span>
+                    </a>
+                    <a href="knowledge.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <span class="nav-text">База знаний</span>
+                    </a>
+                    <a href="messages.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-comments"></i></div>
+                        <span class="nav-text">Сообщения</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="teachers-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Поиск преподавателя..." class="search-input" id="teacherSearch">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="math">Математика</button>
+                    <button class="filter-btn" data-filter="physics">Физика</button>
+                    <button class="filter-btn" data-filter="it">Информатика</button>
+                    <button class="filter-btn" data-filter="construction">Строительство</button>
+                </div>
+            </section>
+
+            <section class="teachers-grid">
+                <!-- Преподаватель 1 -->
+                <div class="teacher-card" data-department="math" data-subject="Математика">
+                    <div class="teacher-header">
+                        <div class="teacher-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Денисенко Олеся Федоровна</h3>
+                            <p class="teacher-position">Старший преподаватель</p>
+                            <div class="teacher-department">
+                                <span class="department-badge">Математика</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teacher-details">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>anna.ivanova@ktssa.ru</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (900) 123-45-67</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Консультации: Пн, Ср 14:00-16:00</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Кабинет 301</span>
+                        </div>
+                    </div>
+                    <div class="teacher-subjects">
+                        <h4>Преподаваемые дисциплины:</h4>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Математический анализ</span>
+                            <span class="subject-tag">Линейная алгебра</span>
+                            <span class="subject-tag">Дифференциальные уравнения</span>
+                        </div>
+                    </div>
+                    <div class="teacher-actions">
+                        <button class="btn btn-outline btn-sm" onclick="sendMessage(1)">
+                            <i class="fas fa-comment"></i>
+                            Написать
+                        </button>
+                        <button class="btn btn-primary btn-sm" onclick="scheduleConsultation(1)">
+                            <i class="fas fa-calendar-check"></i>
+                            Консультация
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Преподаватель 2 -->
+                <div class="teacher-card" data-department="physics" data-subject="Физика">
+                    <div class="teacher-header">
+                        <div class="teacher-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Денисенко Олеся Федоровна</h3>
+                            <p class="teacher-position">Доцент</p>
+                            <div class="teacher-department">
+                                <span class="department-badge">Физика</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teacher-details">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>sergey.petrov@ktssa.ru</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (900) 234-56-78</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Консультации: Вт, Чт 15:00-17:00</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Кабинет 215</span>
+                        </div>
+                    </div>
+                    <div class="teacher-subjects">
+                        <h4>Преподаваемые дисциплины:</h4>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Общая физика</span>
+                            <span class="subject-tag">Теоретическая механика</span>
+                            <span class="subject-tag">Электричество и магнетизм</span>
+                        </div>
+                    </div>
+                    <div class="teacher-actions">
+                        <button class="btn btn-outline btn-sm" onclick="sendMessage(2)">
+                            <i class="fas fa-comment"></i>
+                            Написать
+                        </button>
+                        <button class="btn btn-primary btn-sm" onclick="scheduleConsultation(2)">
+                            <i class="fas fa-calendar-check"></i>
+                            Консультация
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Преподаватель 3 -->
+                <div class="teacher-card" data-department="it" data-subject="Информатика">
+                    <div class="teacher-header">
+                        <div class="teacher-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Сидоров Владимир Константинович</h3>
+                            <p class="teacher-position">Преподаватель</p>
+                            <div class="teacher-department">
+                                <span class="department-badge">Информатика</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teacher-details">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>vladimir.sidorov@ktssa.ru</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (900) 345-67-89</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Консультации: Пн, Пт 13:00-15:00</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Компьютерный класс</span>
+                        </div>
+                    </div>
+                    <div class="teacher-subjects">
+                        <h4>Преподаваемые дисциплины:</h4>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Программирование</span>
+                            <span class="subject-tag">Базы данных</span>
+                            <span class="subject-tag">Веб-разработка</span>
+                        </div>
+                    </div>
+                    <div class="teacher-actions">
+                        <button class="btn btn-outline btn-sm" onclick="sendMessage(3)">
+                            <i class="fas fa-comment"></i>
+                            Написать
+                        </button>
+                        <button class="btn btn-primary btn-sm" onclick="scheduleConsultation(3)">
+                            <i class="fas fa-calendar-check"></i>
+                            Консультация
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Преподаватель 4 -->
+                <div class="teacher-card" data-department="construction" data-subject="Строительство">
+                    <div class="teacher-header">
+                        <div class="teacher-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="teacher-info">
+                            <h3 class="teacher-name">Кузнецова Мария Васильевна</h3>
+                            <p class="teacher-position">Профессор</p>
+                            <div class="teacher-department">
+                                <span class="department-badge">Строительство</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="teacher-details">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>maria.kuznetsova@ktssa.ru</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (900) 456-78-90</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Консультации: Ср, Пт 16:00-18:00</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Кабинет 410</span>
+                        </div>
+                    </div>
+                    <div class="teacher-subjects">
+                        <h4>Преподаваемые дисциплины:</h4>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Строительная механика</span>
+                            <span class="subject-tag">Архитектура</span>
+                            <span class="subject-tag">Проектирование зданий</span>
+                        </div>
+                    </div>
+                    <div class="teacher-actions">
+                        <button class="btn btn-outline btn-sm" onclick="sendMessage(4)">
+                            <i class="fas fa-comment"></i>
+                            Написать
+                        </button>
+                        <button class="btn btn-primary btn-sm" onclick="scheduleConsultation(4)">
+                            <i class="fas fa-calendar-check"></i>
+                            Консультация
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="logo-text">КТСиА</span>
+                    </div>
+                    <p class="footer-description">
+                        Государственное бюджетное профессиональное образовательное учреждение<br>
+                        Ростовской области «Каменский техникум строительства и автосервиса»
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Контакты</h4>
+                        <a href="tel:+78001234567" class="footer-link">8 (800) 123-45-67</a>
+                        <a href="mailto:info@ktssa.ru" class="footer-link">info@ktssa.ru</a>
+                        <span class="footer-link">г. Каменск-Шахтинский, ул. Ленина, 123</span>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Быстрые ссылки</h4>
+                        <a href="schedule.html" class="footer-link">Расписание</a>
+                        <a href="journal.html" class="footer-link">Электронный журнал</a>
+                        <a href="knowledge.html" class="footer-link">База знаний</a>
+                        <a href="teachers.html" class="footer-link">Преподаватели</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 ГБПОУ РО «КТСиА». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Функции для страницы преподавателей
+        function sendMessage(teacherId) {
+            alert(`Открытие чата с преподавателем ID: ${teacherId}`);
+            // В реальном приложении здесь будет переход в сообщения
+            window.location.href = `messages.html?teacher=${teacherId}`;
+        }
+
+        function scheduleConsultation(teacherId) {
+            alert(`Запись на консультацию к преподавателю ID: ${teacherId}`);
+            // В реальном приложении здесь будет открытие формы записи
+        }
+
+        // Поиск и фильтрация преподавателей
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('teacherSearch');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const teacherCards = document.querySelectorAll('.teacher-card');
+
+            // Поиск
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                teacherCards.forEach(card => {
+                    const teacherName = card.querySelector('.teacher-name').textContent.toLowerCase();
+                    const teacherSubject = card.dataset.subject.toLowerCase();
+                    
+                    if (teacherName.includes(searchTerm) || teacherSubject.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Фильтрация по кафедрам
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    
+                    // Активный класс
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Фильтрация карточек
+                    teacherCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.department === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КТСиА - База знаний</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">КТСиА Портал</span>
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="user-name">Зимин Максим</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="page-header">
+                <h1 class="page-title">База знаний</h1>
+                <p class="page-subtitle">Учебные материалы, лекции и ресурсы для обучения</p>
+            </section>
+
+            <section class="navigation-section">
+                <div class="navigation-grid">
+                    <a href="index.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-home"></i></div>
+                        <span class="nav-text">Главная</span>
+                    </a>
+                    <a href="schedule.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <span class="nav-text">Расписание</span>
+                    </a>
+                    <a href="journal.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-book"></i></div>
+                        <span class="nav-text">Журнал</span>
+                    </a>
+                    <a href="knowledge.html" class="nav-card active">
+                        <div class="nav-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <span class="nav-text">База знаний</span>
+                    </a>
+                    <a href="messages.html" class="nav-card">
+                        <div class="nav-icon"><i class="fas fa-comments"></i></div>
+                        <span class="nav-text">Сообщения</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Расширенный поиск -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Поиск материалов, лекций, заданий..." class="search-input" id="knowledgeSearch">
+                        <button class="search-btn" id="searchButton">
+                            <i class="fas fa-search"></i>
+                            Найти
+                        </button>
+                    </div>
+                    <div class="search-filters">
+                        <div class="filter-group">
+                            <label>Тип материала:</label>
+                            <select class="filter-select" id="typeFilter">
+                                <option value="all">Все типы</option>
+                                <option value="lecture">Лекции</option>
+                                <option value="practice">Практические</option>
+                                <option value="lab">Лабораторные</option>
+                                <option value="book">Учебники</option>
+                                <option value="video">Видео</option>
+                                <option value="presentation">Презентации</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Предмет:</label>
+                            <select class="filter-select" id="subjectFilter">
+                                <option value="all">Все предметы</option>
+                                <option value="math">Математика</option>
+                                <option value="physics">Физика</option>
+                                <option value="it">Информатика</option>
+                                <option value="construction">Строительство</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Сортировка:</label>
+                            <select class="filter-select" id="sortFilter">
+                                <option value="newest">Сначала новые</option>
+                                <option value="oldest">Сначала старые</option>
+                                <option value="popular">По популярности</option>
+                                <option value="name">По названию</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Быстрый доступ -->
+            <section class="quick-access-section">
+                <h2 class="section-title">Быстрый доступ</h2>
+                <div class="quick-actions-grid">
+                    <button class="quick-action-card" onclick="showRecentMaterials()">
+                        <div class="action-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <span class="action-text">Недавние</span>
+                        <span class="action-badge">12</span>
+                    </button>
+                    <button class="quick-action-card" onclick="showFavorites()">
+                        <div class="action-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="action-text">Избранное</span>
+                        <span class="action-badge">8</span>
+                    </button>
+                    <button class="quick-action-card" onclick="showDownloaded()">
+                        <div class="action-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <span class="action-text">Скачанные</span>
+                        <span class="action-badge">15</span>
+                    </button>
+                    <button class="quick-action-card" onclick="uploadMaterial()">
+                        <div class="action-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <span class="action-text">Загрузить</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Категории материалов -->
+            <section class="categories-section">
+                <div class="section-header">
+                    <h2 class="section-title">Категории материалов</h2>
+                    <button class="btn-link" id="viewAllCategories">
+                        Все категории
+                    </button>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="math" onclick="showCategory('math')">
+                        <div class="category-icon primary">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-name">Математика</h3>
+                            <p class="category-description">Лекции, задачи, методички</p>
+                            <div class="category-stats">
+                                <span class="stat">24 материала</span>
+                                <span class="stat">5 обновлений</span>
+                            </div>
+                        </div>
+                        <div class="category-actions">
+                            <button class="btn-icon" onclick="event.stopPropagation(); toggleFavorite('math')">
+                                <i class="far fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="physics" onclick="showCategory('physics')">
+                        <div class="category-icon success">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-name">Физика</h3>
+                            <p class="category-description">Лабораторные, опыты, теория</p>
+                            <div class="category-stats">
+                                <span class="stat">18 материалов</span>
+                                <span class="stat">3 новых</span>
+                            </div>
+                        </div>
+                        <div class="category-actions">
+                            <button class="btn-icon" onclick="event.stopPropagation(); toggleFavorite('physics')">
+                                <i class="far fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="it" onclick="showCategory('it')">
+                        <div class="category-icon warning">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-name">Информатика</h3>
+                            <p class="category-description">Программирование, базы данных</p>
+                            <div class="category-stats">
+                                <span class="stat">32 материала</span>
+                                <span class="stat">8 обновлений</span>
+                            </div>
+                        </div>
+                        <div class="category-actions">
+                            <button class="btn-icon" onclick="event.stopPropagation(); toggleFavorite('it')">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="construction" onclick="showCategory('construction')">
+                        <div class="category-icon danger">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-name">Строительство</h3>
+                            <p class="category-description">Проекты, чертежи, нормативы</p>
+                            <div class="category-stats">
+                                <span class="stat">45 материалов</span>
+                                <span class="stat">12 новых</span>
+                            </div>
+                        </div>
+                        <div class="category-actions">
+                            <button class="btn-icon" onclick="event.stopPropagation(); toggleFavorite('construction')">
+                                <i class="far fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Рекомендованные материалы -->
+            <section class="featured-materials">
+                <div class="section-header">
+                    <h2 class="section-title">Рекомендовано для вас</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" id="refreshRecommendations">
+                            <i class="fas fa-sync-alt"></i>
+                            Обновить
+                        </button>
+                    </div>
+                </div>
+                <div class="materials-carousel" id="materialsCarousel">
+                    <button class="carousel-btn prev" onclick="scrollCarousel(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next" onclick="scrollCarousel(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <div class="carousel-track">
+                        <!-- Материал 1 -->
+                        <div class="material-card featured">
+                            <div class="material-badge">Новое</div>
+                            <div class="material-header">
+                                <div class="material-type pdf">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="material-meta">
+                                    <span class="material-subject">Математика</span>
+                                    <span class="material-date">24.05.2024</span>
+                                </div>
+                            </div>
+                            <div class="material-content">
+                                <h3 class="material-title">Лекция по математическому анализу</h3>
+                                <p class="material-description">Полный курс лекций по теме "Дифференциальные уравнения" с примерами и решениями</p>
+                                <div class="material-info">
+                                    <span class="info-item">
+                                        <i class="fas fa-file-alt"></i>
+                                        48 страниц
+                                    </span>
+                                    <span class="info-item">
+                                        <i class="fas fa-download"></i>
+                                        124 скачивания
+                                    </span>
+                                    <span class="info-item">
+                                        <i class="fas fa-star"></i>
+                                        4.8
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="material-actions">
+                                <button class="btn-icon" title="Предпросмотр" onclick="previewMaterial(1)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon" title="В избранное" onclick="toggleMaterialFavorite(1)">
+                                    <i class="far fa-star"></i>
+                                </button>
+                                <button class="btn btn-primary btn-sm" onclick="downloadMaterial(1)">
+                                    <i class="fas fa-download"></i>
+                                    Скачать
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Материал 2 -->
+                        <div class="material-card">
+                            <div class="material-header">
+                                <div class="material-type video">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <div class="material-meta">
+                                    <span class="material-subject">Физика</span>
+                                    <span class="material-date">23.05.2024</span>
+                                </div>
+                            </div>
+                            <div class="material-content">
+                                <h3 class="material-title">Видеоурок по механике</h3>
+                                <p class="material-description">Практическое занятие по решению задач по механике с разбором типичных ошибок</p>
+                                <div class="material-info">
+                                    <span class="info-item">
+                                        <i class="fas fa-clock"></i>
+                                        45 минут
+                                    </span>
+                                    <span class="info-item">
+                                        <i class="fas fa-download"></i>
+                                        89 скачиваний
+                                    </span>
+                                    <span class="info-item">
+                                        <i class="fas fa-star"></i>
+                                        4.6
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="material-actions">
+                                <button class="btn-icon" title="Предпросмотр" onclick="previewMaterial(2)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon" title="В избранное" onclick="toggleMaterialFavorite(2)">
+                                    <i class="far fa-star"></i>
+                                </button>
+                                <button class="btn btn-primary btn-sm" onclick="watchVideo(2)">
+                                    <i class="fas fa-play"></i>
+                                    Смотреть
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Материал 3 -->
+                        <div class="material-card">
+                            <div class="material-header">
+                                <div class="material-type code">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="material-meta">
+                                    <span class="material-subject">Информатика</span>
+                                    <span class="material-date">22.05.2024</span>
+                                </div>
+                            </div>
+                            <div class="material-content">
+                                <h3 class="material-title">Лабораторная работа №5</h3>
+                                <p class="material-description">Работа с базами данных: создание запросов, нормализация, оптимизация</p>
+                                <div class="material-info">
+                                    <span class="info-item">
+                                        <i class="fas fa-tasks"></i>
+                                        Задание + код
+                                    </span>
+                                    <span class="info-item">
+                                        <i class="fas fa-download"></i>
+                                        156 скачиваний
+                                    </span>
+                                    <span class="info-item">
+                                        <i class="fas fa-star"></i>
+                                        4.9
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="material-actions">
+                                <button class="btn-icon" title="Предпросмотр" onclick="previewMaterial(3)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-icon" title="В избранное" onclick="toggleMaterialFavorite(3)">
+                                    <i class="fas fa-star"></i>
+                                </button>
+                                <button class="btn btn-primary btn-sm" onclick="downloadMaterial(3)">
+                                    <i class="fas fa-download"></i>
+                                    Скачать
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Все материалы -->
+            <section class="all-materials">
+                <div class="section-header">
+                    <h2 class="section-title">Все материалы</h2>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="materials-container grid-view" id="materialsContainer">
+                    <!-- Материалы будут добавляться динамически через JavaScript -->
+                </div>
+
+                <div class="load-more">
+                    <button class="btn btn-outline" id="loadMoreBtn">
+                        <i class="fas fa-plus"></i>
+                        Загрузить еще
+                    </button>
+                </div>
+            </section>
+
+            <!-- Статистика использования -->
+            <section class="usage-stats">
+                <div class="section-header">
+                    <h2 class="section-title">Ваша активность</h2>
+                </div>
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">47</div>
+                            <div class="stat-label">Скачано материалов</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">В избранном</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">24ч</div>
+                            <div class="stat-label">Время изучения</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Завершено курсов</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Модальное окно предпросмотра -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Предпросмотр материала</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-content" id="previewContent">
+                    <!-- Контент предпросмотра будет загружаться динамически -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Закрыть</button>
+                <button class="btn btn-primary" onclick="downloadCurrentMaterial()">
+                    <i class="fas fa-download"></i>
+                    Скачать полную версию
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно загрузки -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Загрузить материал</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="upload-form" id="uploadForm">
+                    <div class="form-group">
+                        <label>Название материала</label>
+                        <input type="text" class="form-input" placeholder="Введите название" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Описание</label>
+                        <textarea class="form-input" placeholder="Опишите материал" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Предмет</label>
+                        <select class="form-input" required>
+                            <option value="">Выберите предмет</option>
+                            <option value="math">Математика</option>
+                            <option value="physics">Физика</option>
+                            <option value="it">Информатика</option>
+                            <option value="construction">Строительство</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Тип материала</label>
+                        <select class="form-input" required>
+                            <option value="">Выберите тип</option>
+                            <option value="lecture">Лекция</option>
+                            <option value="practice">Практическая</option>
+                            <option value="lab">Лабораторная</option>
+                            <option value="book">Учебник</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Файл</label>
+                        <div class="file-upload">
+                            <input type="file" class="file-input" id="fileInput" required>
+                            <label for="fileInput" class="file-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Выберите файл</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Отмена</button>
+                <button class="btn btn-primary" onclick="submitUpload()">
+                    <i class="fas fa-upload"></i>
+                    Загрузить
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="logo-text">КТСиА</span>
+                    </div>
+                    <p class="footer-description">
+                        Государственное бюджетное профессиональное образовательное учреждение<br>
+                        Ростовской области «Каменский техникум строительства и автосервиса»
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Контакты</h4>
+                        <a href="tel:+78001234567" class="footer-link">8 (800) 123-45-67</a>
+                        <a href="mailto:info@ktssa.ru" class="footer-link">info@ktssa.ru</a>
+                        <span class="footer-link">г. Каменск-Шахтинский, ул. Ленина, 123</span>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Быстрые ссылки</h4>
+                        <a href="schedule.html" class="footer-link">Расписание</a>
+                        <a href="journal.html" class="footer-link">Электронный журнал</a>
+                        <a href="knowledge.html" class="footer-link">База знаний</a>
+                        <a href="teachers.html" class="footer-link">Преподаватели</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 ГБПОУ РО «КТСиА». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="knowledge.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
